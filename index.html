@@ -4,93 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Asset Manager Fuhua</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   <link rel="icon" type="image/png" href="./favicon.png">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: {
-            bgMain: '#16181D',
-            bgSidebar: '#1E2128',
-            bgCard: '#22252D',
-            bgInput: '#282C35',
-            borderDark: '#343946',
-            accentGold: '#FBBF24',
-            accentGoldHover: '#F59E0B',
-            accentGreen: '#10B981'
-          }
-        }
-      }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
     }
-  </script>
-<style>
-    body { background-color: #16181D; color: #E5E7EB; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #16181D; }
-    ::-webkit-scrollbar-thumb { background: #343946; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #4B5563; }
-    input[type="date"]::-webkit-calendar-picker-indicator {
-      filter: invert(0.8);
-      cursor: pointer;
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
-
-    /* Styling area kamera html5-qrcode agar rapi */
-    #qrReaderBox video {
-      width: 100% !important;
-      border-radius: 0.5rem;
-      object-fit: cover;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
-    #qrReaderBox img[alt="Info icon"],
-    #qrReaderBox img[alt="Camera based scan"] {
-      display: none !important;
-    }
-
-    #printArea { display: none; }
-    @media print {
-      @page { margin: 8mm; }
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        height: auto !important;
-        overflow: visible !important;
-        display: block !important;
-      }
-      #loginScreen, #appWrapper, #qrModal, #scanQrModal, #masterModal, #userModal, #editAssetModal, #detailAssetModal, #toast {
-        display: none !important;
-      }
-      #printArea {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 10px !important;
-        align-items: flex-start !important;
-        background: #ffffff !important;
-      }
-      .qr-sticker-card {
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-        border: 2px solid #E32227 !important;
-        background: #ffffff !important;
-        color: #000000 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      .qr-sticker-logo, .qr-sticker-card img {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        filter: none !important;
-      }
-      .qr-sticker-footer {
-        background-color: #E32227 !important;
-        color: #ffffff !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      color: #666;
+      z-index: 10;
     }
   </style>
 </head>
